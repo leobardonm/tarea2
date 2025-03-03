@@ -6,23 +6,14 @@ interface WeatherCardProps {
   description: string;
   uvIndex: number;
   icon: string;
+  onRemove: () => void;
 }
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ city, temperature, description, uvIndex, icon }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  const handleClose = () => {
-    setIsVisible(false);
-  };
-
-  if (!isVisible) {
-    return null;
-  }
-
+const WeatherCard: React.FC<WeatherCardProps> = ({ city, temperature, description, uvIndex, icon, onRemove }) => {
   return (
     <div className="relative border rounded-lg p-4 shadow-md">
       <button
-        onClick={handleClose}
+        onClick={onRemove}
         className="absolute top-2 left-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-700"
       >
         X
